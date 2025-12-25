@@ -4,8 +4,11 @@ import { PropsWithChildren } from 'react'
 import {Provider} from "react-redux";
 import {PersistGate} from "redux-persist/integration/react";
 
-import {store, persistor} from "@/store";
-import './app.less'
+import {persistor, store} from "@/store";
+
+
+import '@/specs/cross.specs.less'
+
 
 function App({ children }: PropsWithChildren<any>) {
   useLaunch(() => {
@@ -13,9 +16,9 @@ function App({ children }: PropsWithChildren<any>) {
   })
 
   return <Provider store={store}>
-   <PersistGate persistor={persistor} >
-     {children}
-   </PersistGate>
+    <PersistGate persistor={persistor} >
+      {children}
+    </PersistGate>
   </Provider>
 }
 

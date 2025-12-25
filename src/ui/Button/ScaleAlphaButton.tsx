@@ -1,9 +1,10 @@
+import{ CommonButtonProps } from '@/ui'
+
 import BaseButton from './BaseButton'
 import { usePressed } from './hooks/usePressed'
-import fx from './styles/scale+alpha.module.less'
+import fx from './styles/scale_alpha.module.less'
 import { cx } from './utils/cx'
 
-import type { CommonButtonProps } from './types'
 
 /**
  * 按钮点击缩放+透明度效果

@@ -22,7 +22,7 @@ function getPoint(e: any) {
  * @param options
  */
 export function useRipple(options: { enabled: boolean; hostId: string; duration?: number }) {
-  const { enabled, hostId, duration = 520 } = options
+  const { enabled = true, hostId, duration = 520 } = options
   const [ripples, setRipples] = useState<RippleItem[]>([])
 
   const addRipple = async (e: any) => {

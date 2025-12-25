@@ -1,12 +1,12 @@
 ## 福星圈 (基于 Taro4 跨端框架开发)
 ---------------
 ### 框架技术生态
-- Redux/Redux toolkit 状态管理
-- Redux Persist 本地持久化
-- Axios 网络请求
-- Prettier + ESLint 代码格式化/美化
-- Webpack5 构建工具
-- TypeScript TS
+- `Redux/Redux toolkit` **状态管理**
+-` Redux Persist` **本地持久化**
+- `Axios` **网络请求**
+- `Prettier + ESLint` **代码格式化/美化**
+- `Webpack5` **构建工具**
+- `TypeScript` **TS**
 
 --------------
 

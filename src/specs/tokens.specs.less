@@ -1,16 +1,18 @@
 /***
 ** 颜色，字体，间距等通用令牌规范
+** 根据小程序RPX适配情况，原有值需要X2
 **/
 
 // ---- Color ----
-@color-text: #1f2329;
-@color-text-secondary: #646a73;
+@color-text: #000000;
+@color-text-secondary: #78828A;
 @color-placeholder: #a6a6a6;
 
 @color-bg: #ffffff;
-@color-bg-secondary: #f5f6f7;
+@color-bg-secondary: #F7F7F7;
 
-@color-primary: #1677ff;
+@color-primary: #0C6851;
+@color-secondary: #F4AC1A;
 @color-success: #00b578;
 @color-warning: #ff8f1f;
 @color-danger: #f53f3f;
@@ -18,25 +20,52 @@
 @color-border: #e5e6eb;
 
 // ---- Typography ----
+@font-size-6: 12rpx;
+@font-size-8: 16rpx;
+@font-size-10: 20rpx;
 @font-size-12: 24rpx;
 @font-size-14: 28rpx;
 @font-size-16: 32rpx;
 @font-size-18: 36rpx;
+@font-size-20: 40rpx;
+@font-size-22: 44rpx;
+@font-size-24: 48rpx;
+@font-size-26: 52rpx;
+@font-size-28: 56rpx;
+@font-size-30: 60rpx;
+@font-size-32: 64rpx;
+@font-size-34: 68rpx;
 
-@line-height-tight: 1.2;
-@line-height-normal: 1.5;
+@line-height-12: 1.2;
+@line-height-14: 1.4;
+@line-height-16: 1.6;
+@line-height-18: 1.8;
 
 // ---- Spacing (8pt 思路：8/16/24...) ----
 @space-4: 8rpx;
+@space-6: 12rpx;
 @space-8: 16rpx;
+@space-10: 20rpx;
 @space-12: 24rpx;
+@space-14: 28rpx;
 @space-16: 32rpx;
+@space-18: 36rpx;
 @space-20: 40rpx;
+@space-22: 44rpx;
 @space-24: 48rpx;
+@space-26: 52rpx;
+@space-28: 56rpx;
+@space-30: 60rpx;
+@space-32: 64rpx;
 
 // ---- Radius ----
 @radius-8: 16rpx;
+@radius-10: 20rpx;
 @radius-12: 24rpx;
+@radius-14: 28rpx;
+@radius-16: 32rpx;
+@radius-18: 36rpx;
+@radius-20: 40rpx;
 @radius-round: 9999rpx;
 
 // ---- Shadow  ----
@@ -46,3 +75,7 @@
 @z-modal: 1000;
 @z-toast: 1100;
 @z-popover: 1200;
+
+// ---- Toast ----
+@toast-bg: rgba(20, 20, 20, 0.92);
+@toast-text: #ffffff;

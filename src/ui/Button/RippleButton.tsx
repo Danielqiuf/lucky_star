@@ -3,13 +3,19 @@ import Taro from '@tarojs/taro'
 
 import { useMemo } from 'react'
 
+import { RippleButtonProps } from '@/ui'
+import {TypeGuardUtil} from "@/utils";
+
 import BaseButton from './BaseButton'
 import { useRipple } from './hooks/useRipple'
 import ScaleOpacityButton from './ScaleAlphaButton'
 import fx from './styles/ripple.module.less'
 import { cx } from './utils/cx'
 
-import type { RippleButtonProps } from './types'
+const rippleTypeToColorMapper = {
+  'light': 'rgba(0,0,0,.45)',
+  'dark': 'rgba(255,255,255, .38)'
+}
 
 /**
  * 按钮点击水波纹效果，对齐Android原生按钮水波纹效果
@@ -18,7 +24,8 @@ import type { RippleButtonProps } from './types'
  */
 export default function RippleButton(props: RippleButtonProps) {
   const {
-    rippleColor = 'rgba(255,255,255,.35)',
+    rippleColor,
+    rippleType = 'light',
     disabled = false,
     loading = false,
     className,
@@ -34,6 +41,10 @@ export default function RippleButton(props: RippleButtonProps) {
     () => `uni-ripple-${Date.now()}-${Math.random().toString(16).slice(2)}`,
     []
   )
+
+  const hRippleColor = useMemo(() =>
+    TypeGuardUtil.isNil(rippleColor) ? rippleTypeToColorMapper[rippleType] : rippleColor
+    , [rippleType, rippleColor])
 
   const { ripples, addRipple } = useRipple({ enabled: !isDisabled, hostId, duration: 520 })
 
@@ -71,7 +82,7 @@ export default function RippleButton(props: RippleButtonProps) {
               top: `${r.top}px`,
               width: `${r.size}px`,
               height: `${r.size}px`,
-              backgroundColor: rippleColor,
+              backgroundColor: hRippleColor,
             }}
           />
         ))}

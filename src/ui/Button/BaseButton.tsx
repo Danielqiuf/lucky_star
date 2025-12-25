@@ -2,10 +2,11 @@ import { Button } from '@tarojs/components'
 
 import { useMemo } from 'react'
 
+import { CommonButtonProps } from '@/ui'
+
 import styles from './styles/base.module.less'
 import { cx } from './utils/cx'
 
-import type { CommonButtonProps } from './types'
 
 export default function BaseButton(props: CommonButtonProps) {
   const {

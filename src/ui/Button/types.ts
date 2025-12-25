@@ -37,9 +37,13 @@ export type CommonButtonProps = Omit<
   children?: React.ReactNode
 }
 
+export type RippleType = 'light' | 'dark';
+
 export type RippleButtonProps = CommonButtonProps & {
-  /** 水波纹颜色（建议 rgba） */
+  /** 水波纹颜色 */
   rippleColor?: string
+  /** 水波纹类型, (light , dark), light下深色水波纹, dark下浅色水波纹 */
+  rippleType?:  RippleType
 }
 
 export {}

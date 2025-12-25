@@ -1,4 +1,4 @@
-/***
+ /***
 ** 常用的Mixin相关规范
 **/
 
@@ -17,6 +17,13 @@
   justify-content: @justify;
 }
 
+ .flex-row-center() {
+   .flex-row(center, center)
+ }
+
+ .flex-col-center() {
+   .flex-col(center, center)
+ }
 // 单行省略
 .ellipsis-1() {
   overflow: hidden;
