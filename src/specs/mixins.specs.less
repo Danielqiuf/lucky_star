@@ -1,0 +1,57 @@
+/***
+** 常用的Mixin相关规范
+**/
+
+// Flex
+.flex-row(@align: center, @justify: flex-start) {
+  display: flex;
+  flex-direction: row;
+  align-items: @align;
+  justify-content: @justify;
+}
+
+.flex-col(@align: stretch, @justify: flex-start) {
+  display: flex;
+  flex-direction: column;
+  align-items: @align;
+  justify-content: @justify;
+}
+
+// 单行省略
+.ellipsis-1() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// 多行省略
+.ellipsis-2() {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+// 1px 细线
+.hairline-bottom(@color: #e5e6eb) {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: @color;
+    transform: scaleY(.5);
+    transform-origin: 0 100%;
+  }
+}
+
+// 点击态,小程序里也可用hover-class做，但写在样式里更统一
+.tap-active(@opacity: .85) {
+  &:active {
+    opacity: @opacity;
+  }
+}

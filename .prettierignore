@@ -1,0 +1,18 @@
+dist
+build
+coverage
+node_modules
+*.min.*
+*.lock
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# Taro/小程序产物
+.weapp
+.swan
+.alipay
+.tt
+.qq
+.h5
+.rn
