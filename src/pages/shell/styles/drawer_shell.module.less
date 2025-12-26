@@ -1,0 +1,66 @@
+@import "@/specs/tokens.specs.less";
+@import "@/specs/mixins.specs.less";
+
+
+.portal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  z-index: @z-drawer;
+  pointer-events: auto;
+}
+
+.mask {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  background: @mask-bg-80;
+  animation: maskIn 220ms ease both;
+}
+
+.panel {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+
+  background: @color-bg;
+  box-shadow: 18rpx 0 40rpx rgba(0, 0, 0, 0.22);
+
+  transform: translate3d(-105%, 0, 0);
+  backface-visibility: hidden;
+  opacity: 0.98;
+  will-change: transform;
+}
+
+.enterMask { animation: maskIn 180ms ease both; }
+.enterPanel { animation: panelIn 200ms ease-out both; } 
+
+.leaveMask { animation: maskOut 180ms ease both; }
+.leavePanel { animation: panelOut 200ms ease-out both; }
+
+
+@keyframes maskIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes maskOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@keyframes panelIn {
+  from { transform: translate3d(-105%, 0, 0); opacity: 0.98; }
+  to   { transform: translate3d(0, 0, 0); opacity: 1; }
+}
+@keyframes panelOut {
+  from { transform: translate3d(0, 0, 0); opacity: 1; }
+  to   { transform: translate3d(-105%, 0, 0); opacity: 0.98; }
+}

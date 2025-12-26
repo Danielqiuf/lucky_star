@@ -1,0 +1,82 @@
+@iconfont-name: "LucStFonts";
+@iconfont-path: "~@/assets/fonts";
+
+
+@font-face {
+  font-family: @iconfont-name;
+  src: url("@{iconfont-path}/@{iconfont-name}.ttf") format("truetype"),
+       url("@{iconfont-path}/@{iconfont-name}.woff") format("woff"),
+       url("@{iconfont-path}/@{iconfont-name}.woff2") format("woff2");
+
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+
+.luc-icon {
+  font-size: 24rpx;
+  font-family: @iconfont-name;
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+
+
+@icon-more: "\f00d";
+@icon-search-normal: "\f00e";
+@icon-EyeIcon: "\f00f";
+@icon-icon: "\f010";
+@icon-TimeCircle: "\f011";
+@icon-PaperPlus: "\f012";
+@icon-Chat: "\f013";
+@icon-Calendar: "\f014";
+@icon-5: "\f015";
+@icon-more1111: "\f00b";
+@icon-Bookmark1: "\f00c";
+@icon-Bookmark: "\f007";
+@icon-more111: "\f008";
+@icon-bx-message-square-dots: "\f009";
+@icon-bx-bell1: "\f00a";
+@icon-sv_miniprogram: "\f000";
+@icon-sv_shopping: "\f001";
+@icon-sv_settings: "\f002";
+@icon-sv_loggout: "\f003";
+@icon-sv_history: "\f004";
+@icon-sv_community: "\f005";
+@icon-sv_comments: "\f006";
+
+.luc-icon--more::before { content: @icon-more;clear:both; }
+.luc-icon--search-normal::before { content: @icon-search-normal; clear:both; }
+.luc-icon--EyeIcon::before { content: @icon-EyeIcon;clear:both; }
+.luc-icon--icon::before { content: @icon-icon;clear:both; }
+.luc-icon--TimeCircle::before { content: @icon-TimeCircle;clear:both; }
+.luc-icon--PaperPlus::before { content: @icon-PaperPlus;clear:both; }
+.luc-icon--Chat::before { content: @icon-Chat;clear:both; }
+.luc-icon--Calendar::before { content: @icon-Calendar;clear:both; }
+.luc-icon--num-5::before { content: @icon-5;clear:both; }
+.luc-icon--more1111::before { content: @icon-more1111;clear:both; }
+.luc-icon--Bookmark1::before { content: @icon-Bookmark1;clear:both; }
+.luc-icon--Bookmark::before { content: @icon-Bookmark;clear:both; }
+.luc-icon--more111::before { content: @icon-more111; clear:both;}
+.luc-icon--bx-message-square-dots::before { content: @icon-bx-message-square-dots;clear:both; }
+.luc-icon--bx-bell1::before { content: @icon-bx-bell1;clear:both; }
+.luc-icon--sv_miniprogram::before { content: @icon-sv_miniprogram;clear:both; }
+.luc-icon--sv_shopping::before { content: @icon-sv_shopping;clear:both; }
+.luc-icon--sv_settings::before { content: @icon-sv_settings;clear:both; }
+.luc-icon--sv_loggout::before { content: @icon-sv_loggout;clear:both; }
+.luc-icon--sv_history::before { content: @icon-sv_history;clear:both; }
+.luc-icon--sv_community::before { content: @icon-sv_community;clear:both; }
+.luc-icon--sv_comments::before { content: @icon-sv_comments;clear:both; }
+
+.i(@code) {
+  .luc-icon;
+  &::before { content: @code;  }
+}
+
+

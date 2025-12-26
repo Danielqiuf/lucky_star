@@ -1,0 +1,57 @@
+@import "@/specs/tokens.specs.less";
+@import "@/specs/mixins.specs.less";
+
+.wrap {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: @z-bottom-tab;
+  background-color: @color-bg;
+}
+
+.bar {
+  .flex-row(center, space-around);
+  background: @color-bg;
+  backdrop-filter: blur(14px);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding: @space-8;
+}
+
+.item {
+  flex: 1;
+  .rpx(58);
+  height: @result;
+  transition: transform 120ms ease;
+  .flex-row-center();
+
+  &.pressed { transform: scale(0.92);}
+}
+
+.icon {
+  .rpx(24);
+  width: @result;
+  height: @result;
+}
+
+.center_icon {
+  background-color: @color-secondary;
+  border-radius: 999px;
+  .rpx(52);
+  width: @result;
+  height: @result;
+  position: absolute;
+  z-index: -1;
+  box-shadow: @shadow-1;
+}
+
+.text {
+  font-size: @font-size-12;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.safe {
+  height: constant(safe-area-inset-bottom);
+  height: env(safe-area-inset-bottom);
+  background: rgba(255, 255, 255, 0.9);
+}

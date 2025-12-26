@@ -13,10 +13,6 @@ export type CommonButtonProps = Omit<
   ButtonProps,
   'className' | 'style' | 'onClick' | 'disabled' | 'loading'
 > & {
-  /** 视觉类型 */
-  type?: BtnType
-  /** 尺寸 */
-  size?: BtnSize
   /** 是否占满父容器宽度 */
   block?: boolean
 

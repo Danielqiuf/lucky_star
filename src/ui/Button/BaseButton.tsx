@@ -10,8 +10,6 @@ import { cx } from './utils/cx'
 
 export default function BaseButton(props: CommonButtonProps) {
   const {
-    type = 'default',
-    size = 'md',
     block = false,
     disabled = false,
     loading = false,
@@ -32,8 +30,6 @@ export default function BaseButton(props: CommonButtonProps) {
       id={id}
       className={cx(
         styles.btn,
-        styles[`type-${type}`],
-        styles[`size-${size}`],
         block && styles.block,
         className,
       )}

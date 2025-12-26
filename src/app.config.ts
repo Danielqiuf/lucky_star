@@ -4,6 +4,7 @@ export default defineAppConfig({
     'pages/contacts/contacts',
     'pages/personal/personal',
     'pages/login/login',
+    'pages/schedule/schedule',
   ],
   window: {
     backgroundTextStyle: 'light',

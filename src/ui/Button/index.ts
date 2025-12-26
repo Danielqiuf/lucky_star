@@ -8,4 +8,8 @@ export { default as ScaleButton } from './ScaleButton'
 export { default as AlphaButton } from './AlphaButton'
 export { default as ScaleAlphaButton } from './ScaleAlphaButton'
 
+export * from './hooks/usePressed';
+export * from './hooks/useRipple';
+export * from './utils/cx';
+
 export * from './types'

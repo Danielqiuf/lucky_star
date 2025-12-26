@@ -8,6 +8,7 @@ import {persistor, store} from "@/store";
 
 
 import '@/specs/cross.specs.less'
+import '@/specs/fonts.specs.less'
 
 
 function App({ children }: PropsWithChildren<any>) {

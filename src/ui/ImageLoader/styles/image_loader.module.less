@@ -1,0 +1,83 @@
+@import "@/specs/tokens.specs.less";
+@import "@/specs/mixins.specs.less";
+
+@spinnerSize: 28rpx;
+@spinnerBorder: 4rpx;
+.root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; // aspectFill 时常用
+}
+
+
+.img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.mask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  width: @spinnerSize;
+  height: @spinnerSize;
+  border-radius: 50%;
+  border: @spinnerBorder solid rgba(0, 0, 0, 0.12);
+  border-top-color: rgba(0, 0, 0, 0.55);
+  animation: smartImageSpin 0.9s linear infinite;
+}
+
+.errorWrap {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error {
+  text-align: center;
+  padding: 16rpx 20rpx;
+}
+
+.errorTitle {
+  font-size: 26rpx;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 1.3;
+}
+
+.errorSub {
+  margin-top: 8rpx;
+  font-size: 22rpx;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+@keyframes smart-image-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

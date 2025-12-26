@@ -1,0 +1,117 @@
+@import "@/specs/tokens.specs.less";
+@import "@/specs/mixins.specs.less";
+
+.mask {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* 降级方案：半透明蒙层 */
+  background: rgba(0, 0, 0, 0.25);
+
+  /* 支持时：模糊背景） */
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+
+  padding: @zero @space-32;
+  box-sizing: border-box;
+}
+
+.card {
+  width: percentage(0.95);
+
+  background: #ffffff;
+  border-radius: @radius-16;
+  padding: @space-28 @space-10;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .shadow(box, 0, 18rpx, 50rpx, rgba(0, 0, 0, 0.12));
+
+  transform-origin: center center;
+  animation: popIn 180ms ease-out;
+}
+
+.maskEnter {
+  animation: maskFadeIn 180ms ease-out forwards;
+}
+
+.maskLeave {
+  animation: maskFadeOut 180ms ease-in forwards;
+}
+
+.cardEnter {
+  animation: cardPopIn 180ms ease-out forwards;
+}
+
+.cardLeave {
+  animation: cardPopOut 180ms ease-in forwards;
+}
+
+@keyframes maskFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes maskFadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes cardPopIn {
+  from {
+    transform: translateY(-36rpx) scale(0.96);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes cardPopOut {
+  from {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-36rpx) scale(0.96);
+    opacity: 0;
+  }
+}
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.btn {
+  margin-top: @space-30;
+
+  .rpx(56);
+  width: 100%;
+  height: @result;
+  border-radius: @radius-round;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #1f6f5c;
+}
+
+.btnText {
+  font-size: @font-size-16;
+  line-height: @line-height-14;
+  color: @color-text-secondary;
+  font-weight: 400;
+}

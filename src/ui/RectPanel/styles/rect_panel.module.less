@@ -1,0 +1,89 @@
+@import "@/specs/tokens.specs.less";
+@import "@/specs/mixins.specs.less";
+
+
+.panel {
+  border-radius: @radius-16;
+  margin-top: @space-18;
+  background-color: @color-primary;
+  padding-left: @space-16;
+  padding-right: @space-16;
+
+  &_row {
+    padding-top: @space-18;
+    .flex-row(start, space-between);
+  }
+  &_tag {
+    background-color: rgba(255,255,255,.24);
+    color: @color-text-secondary;
+    border-radius: @radius-12;
+    padding: @space-4 @space-12;
+    line-height: 1;
+  }
+  &_qrcode {
+    .rpx(22);
+    width: @result;
+    height: @result
+  }
+
+  &_scores {
+    font-size: @font-size-26;
+    color: @color-text-secondary;
+    line-height: @line-height-16;
+    padding-top: @space-8;
+  }
+  &_scores_expire {
+    font-size: @font-size-10;
+    color: @color-text-sub2;
+    line-height: 1;
+  }
+
+  &_scores_progress {
+    ._progress_text {
+      font-size: @font-size-12;
+      color: @color-text-secondary;
+    }
+    &_title {
+      ._progress_text;
+      line-height: @line-height-22;
+      padding-top: @space-8;
+    }
+    &_wrap {
+      .flex-row;
+    }
+    &_percent {
+      ._progress_text;
+      padding-left: @space-6;
+    }
+    &_bar {
+      --bar-width: 0%;
+      position: relative;
+      border-radius: @radius-8;
+      overflow: hidden;
+      width: 100%;
+      background-color: rgba(254,254,254,.16);
+      .rpx(6);
+      height: @result;
+
+      &::after {
+        border: none;
+        content: '';
+        position: absolute;
+        top:0;
+        bottom: 0;
+        left: 0;
+        width: var(--bar-width);
+        background-color: rgba(17,17,17,1);
+        border-radius: @radius-8;
+      }
+    }
+  }
+
+   &_bottom {
+    padding: @space-18 @zero @space-10 @zero;
+  }
+}
+
+.p_anim::after {
+  transition: width 300ms ease;
+}
