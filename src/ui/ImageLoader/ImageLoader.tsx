@@ -47,7 +47,7 @@ const ImageLoader = memo(
       emptyAsError = true,
     } = props
 
-    const retryCfg: Required<RetryConfig> = {
+    const retryCfg = useMemo<Required<RetryConfig>>(() => ({
       maxRetries: retryConfig?.maxRetries ?? 3,
       baseDelayMs: retryConfig?.baseDelayMs ?? 400,
       maxDelayMs: retryConfig?.maxDelayMs ?? 8000,
@@ -55,7 +55,18 @@ const ImageLoader = memo(
       autoRetry: retryConfig?.autoRetry ?? true,
       bustCacheOnRetry: retryConfig?.bustCacheOnRetry ?? false,
       bustKey: retryConfig?.bustKey ?? '__img_retry',
-    }
+    }), [
+      retryConfig?.maxRetries,
+      retryConfig?.baseDelayMs,
+      retryConfig?.maxDelayMs,
+      retryConfig?.jitterRatio,
+      retryConfig?.autoRetry,
+      retryConfig?.bustCacheOnRetry,
+      retryConfig?.bustKey,
+    ])
+
+    const prefetchEnabled = prefetch?.enabled ?? false
+    const prefetchHeader = useMemo(() => (prefetch?.header ?? {}), [prefetch?.header])
 
     const prefetchCfg: Required<PrefetchConfig> = {
       enabled: prefetch?.enabled ?? false,
@@ -86,29 +97,6 @@ const ImageLoader = memo(
       return addBustQuery(raw, retryCfg.bustKey, String(Date.now()))
     }, [src, retryCfg.bustCacheOnRetry, retryCfg.bustKey])
 
-    const doRetry = useCallback(() => {
-      retryCountRef.current += 1
-      startLoad('retry')
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-
-    const scheduleRetry = useCallback(() => {
-      if (!retryCfg.autoRetry) {return}
-      if (retryCountRef.current >= retryCfg.maxRetries) {return}
-
-      // 下次重试是第 retryCount+1 次
-      const nextRetryIndex = retryCountRef.current + 1 // 1..maxRetries
-      const exp = Math.max(0, nextRetryIndex - 1)
-      const base = retryCfg.baseDelayMs * Math.pow(2, exp)
-      const clamped = Math.min(retryCfg.maxDelayMs, base)
-
-      const jitter = clamped * retryCfg.jitterRatio
-      const delay = Math.max(0, Math.floor(clamped + (Math.random() * 2 - 1) * jitter))
-
-      clearTimer()
-      timerRef.current = setTimeout(() => doRetry(), delay)
-    }, [doRetry, retryCfg])
-
     const startLoad = useCallback(
       async (_reason: 'init' | 'retry') => {
         clearTimer()
@@ -121,10 +109,11 @@ const ImageLoader = memo(
           return
         }
 
+        console.log('start loading')
         setStatus('loading')
 
-        // 网络图预取（可选）
-        if (prefetchCfg.enabled && isNetworkUrl(effective)) {
+        // 网络图预取
+        if (prefetchEnabled && isNetworkUrl(effective)) {
           try {
             const res = await Taro.downloadFile({ url: effective, header: prefetchCfg.header })
             if (gen !== genRef.current) {return}
@@ -145,8 +134,33 @@ const ImageLoader = memo(
 
         setDisplaySrc(effective)
       },
-      [emptyAsError, getEffectiveSrc, prefetchCfg.enabled, prefetchCfg.header]
+      [emptyAsError, getEffectiveSrc, prefetchEnabled, prefetchHeader]
     )
+
+    const doRetry = useCallback(() => {
+      retryCountRef.current += 1
+      startLoad('retry')
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [startLoad])
+
+    const scheduleRetry = useCallback(() => {
+      if (!retryCfg.autoRetry) {return}
+      if (retryCountRef.current >= retryCfg.maxRetries) {return}
+
+      // 下次重试是第 retryCount+1 次
+      const nextRetryIndex = retryCountRef.current + 1 // 1..maxRetries
+      const exp = Math.max(0, nextRetryIndex - 1)
+      const base = retryCfg.baseDelayMs * Math.pow(2, exp)
+      const clamped = Math.min(retryCfg.maxDelayMs, base)
+
+      const jitter = clamped * retryCfg.jitterRatio
+      const delay = Math.max(0, Math.floor(clamped + (Math.random() * 2 - 1) * jitter))
+
+      clearTimer()
+      timerRef.current = setTimeout(() => doRetry(), delay)
+    }, [doRetry, retryCfg])
+
+
 
     const reset = useCallback(() => {
       clearTimer()

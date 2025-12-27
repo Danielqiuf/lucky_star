@@ -3,6 +3,7 @@ export default defineAppConfig({
     'pages/index/index',
     'pages/contacts/contacts',
     'pages/personal/personal',
+    'pages/checkin/checkin',
     'pages/login/login',
     'pages/schedule/schedule',
   ],
@@ -11,5 +12,31 @@ export default defineAppConfig({
     navigationBarBackgroundColor: '#fff',
     navigationBarTitleText: 'WeChat',
     navigationBarTextStyle: 'black'
+  },
+  tabBar: {
+    custom: true,
+    backgroundColor: '#ffffff',
+    list: [
+      {
+        pagePath: 'pages/index/index',
+        text: ''
+      },
+      {
+        pagePath: 'pages/contacts/contacts',
+        text: ''
+      },
+      {
+        pagePath: 'pages/checkin/checkin',
+        text: ''
+      },
+      {
+        pagePath: 'pages/schedule/schedule',
+        text: ''
+      },
+      {
+        pagePath: 'pages/personal/personal',
+        text: ''
+      },
+    ]
   }
 })

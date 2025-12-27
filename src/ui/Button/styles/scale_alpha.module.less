@@ -1,3 +1,11 @@
 .fb { transition: transform 120ms ease, opacity 120ms ease; }
-.pressed {}
-.fb.pressed { transform: scale(0.98); opacity: 0.75; }
+.pressed {
+  --scale: 0.92;
+  --alpha: 0.75;
+}
+
+
+.fb.pressed {
+
+  transform: scale(var(--scale)); opacity: var(--alpha);
+}

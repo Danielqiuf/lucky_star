@@ -1,3 +1,5 @@
 .fb { transition: transform 120ms ease; }
-.pressed {}
-.fb.pressed { transform: scale(0.98);}
+.pressed {
+  --scale: 0.92;
+}
+.fb.pressed { transform: scale(var(--scale));}

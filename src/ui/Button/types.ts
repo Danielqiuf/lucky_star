@@ -16,6 +16,10 @@ export type CommonButtonProps = Omit<
   /** 是否占满父容器宽度 */
   block?: boolean
 
+  scale?: number;
+
+  alpha?: number;
+
   /** 禁用（会与 loading 合并为不可点击） */
   disabled?: boolean
   /** loading 状态（会与 disabled 合并为不可点击） */

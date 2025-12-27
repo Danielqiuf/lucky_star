@@ -1,3 +1,5 @@
 .fb { transition: opacity 120ms ease; }
-.pressed {}
-.fb.pressed { opacity: 0.75; }
+.pressed {
+  --alpha: .75;
+}
+.fb.pressed { opacity: var(--alpha); }

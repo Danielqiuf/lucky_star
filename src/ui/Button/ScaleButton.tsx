@@ -12,14 +12,18 @@ import { cx } from './utils/cx'
  * @constructor
  */
 export default function ScaleButton(props: CommonButtonProps) {
-  const { disabled = false, loading = false, className, children, ...rest } = props
+  const { disabled = false, loading = false, scale, className, children, ...rest } = props
   const isDisabled = disabled || loading
   const { pressed, onTouchStart, onTouchEnd, onTouchCancel } = usePressed(isDisabled)
+
+  const style: any = {}
+  if (scale !== undefined) {style['--scale'] = String(scale)}
 
   return (
     <BaseButton
       disabled={disabled}
       loading={loading}
+      style={style}
       className={cx(fx.fb, pressed && fx.pressed, className)}
       onTouchStart={(e) => { onTouchStart(); props.onTouchStart?.(e) }}
       onTouchEnd={(e) => { onTouchEnd(); props.onTouchEnd?.(e) }}

@@ -12,13 +12,18 @@ import { cx } from './utils/cx'
  * @constructor
  */
 export default function AlphaButton(props: CommonButtonProps) {
-  const { disabled = false, loading = false, className, children, ...rest } = props
+  const { disabled = false, loading = false, alpha, className, children, ...rest } = props
   const isDisabled = disabled || loading
   const { pressed, onTouchStart, onTouchEnd, onTouchCancel } = usePressed(isDisabled)
+
+  const style: any = {}
+  if (alpha !== undefined) {style['--alpha'] = String(alpha)}
+
 
   return (
     <BaseButton
       disabled={disabled}
+      style={style}
       loading={loading}
       className={cx(fx.fb, pressed && fx.pressed, className)}
       onTouchStart={(e) => {

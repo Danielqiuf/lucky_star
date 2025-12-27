@@ -1,0 +1,53 @@
+@import "@/specs/tokens.specs.less";
+@import "@/specs/mixins.specs.less";
+
+.wrapper {
+  .flex-col;
+  .full-size-percent
+}
+
+.tabBar {
+  position: sticky;
+  z-index: 100;
+  width: 100%;
+  box-sizing: border-box;
+  background: @color-bg;
+}
+
+.tabBarInner {
+  .flex-row(center);
+  white-space: nowrap;
+}
+
+.tabItem {
+  padding: 16px 20px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.tabItemActive {
+  font-weight: 600;
+}
+
+.tabItemDisabled {
+  opacity: 0.45;
+}
+
+.contentScroll {
+  .full-size-percent;
+}
+
+.scrollWrap {
+  .full-size-percent;
+}
+
+
+.swiper {
+  width: 100%;
+}
+
+.page {
+  .full-size-percent;
+  box-sizing: border-box;
+}

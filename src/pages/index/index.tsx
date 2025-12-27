@@ -1,34 +1,35 @@
-import {View, Text} from '@tarojs/components'
 import { useLoad } from '@tarojs/taro'
 
+import useScrollMemory from "@/hooks/useScrollMemory";
 import PageShell from "@/pages/shell/PageShell";
-import {modalFactory, RippleButton, ToastHost} from "@/ui";
 
+import HotTopic from "./HotTopic";
 import styles from './index.module.less'
+import NewsUpdates from "./NewsUpdates";
+import RecommendNews from "./RecommendNews";
+import Userinfo from "./Userinfo";
 
 /**
  * 首页
  * @constructor
  */
 export default function Index() {
+  useScrollMemory()
+
   useLoad(() => {
     console.log('Page loaded.')
   })
 
   return (
-    <PageShell>
-      <View className="index" >
-        <Text className={styles.text}>Hello2 world!</Text>
-        <RippleButton rippleType="dark" className={styles.button} onClick={() => {
-
-          modalFactory.show({
-            confirmText: '知道了',
-            centerWidget: <Text>哈哈哈啊哈</Text>
-          })
-        }}><Text className={styles.inter_test}>Click me!</Text></RippleButton>
-
-        <ToastHost />
-      </View>
+    <PageShell className={styles.home}>
+      {/* 用户信息 */}
+      <Userinfo />
+      {/* 热门话题 */}
+      <HotTopic />
+      {/* 推荐资讯 */}
+      <RecommendNews />
+      {/* 新闻动态 */}
+      <NewsUpdates />
     </PageShell>
   )
 }

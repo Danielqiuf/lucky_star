@@ -1,4 +1,4 @@
-import {View} from "@tarojs/components";
+import {RootPortal, View} from "@tarojs/components";
 
 import {useEffect, useRef, useState} from "react";
 
@@ -50,17 +50,19 @@ export default function DrawerShell({ open, onClose, width = '78vw', children }:
   const panelCls = phase === 'leave' ? styles.leavePanel : styles.enterPanel
 
   return (
-    <View className={styles.portal}>
-      <View className={`${styles.mask} ${maskCls}`} onClick={onClose} />
-      <View
-        className={`${styles.panel} ${panelCls}`}
-        style={{ width } as any}
-        // 防止点面板也触发关闭
-        onClick={(e) => e.stopPropagation?.()}
-      >
-        {children}
-      </View>
-    </View>
+   <RootPortal>
+     <View className={styles.portal}>
+       <View className={`${styles.mask} ${maskCls}`} onClick={onClose} />
+       <View
+         className={`${styles.panel} ${panelCls}`}
+         style={{ width } as any}
+         // 防止点面板也触发关闭
+         onClick={(e) => e.stopPropagation?.()}
+       >
+         {children}
+       </View>
+     </View>
+   </RootPortal>
   )
 }
 

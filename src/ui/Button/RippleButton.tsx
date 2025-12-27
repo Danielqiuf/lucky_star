@@ -13,8 +13,8 @@ import fx from './styles/ripple.module.less'
 import { cx } from './utils/cx'
 
 const rippleTypeToColorMapper = {
-  'light': 'rgba(0,0,0,.45)',
-  'dark': 'rgba(255,255,255, .38)'
+  'light': 'rgba(0,0,0,.18)',
+  'dark': 'rgba(255,255,255, .28)'
 }
 
 /**
@@ -72,6 +72,7 @@ export default function RippleButton(props: RippleButtonProps) {
         props.onTouchStart?.(e)
       }}
     >
+      <View className={fx.content}>{children}</View>
       <View className={fx.rippleWrap} aria-hidden='true'>
         {ripples.map((r) => (
           <View
@@ -87,8 +88,6 @@ export default function RippleButton(props: RippleButtonProps) {
           />
         ))}
       </View>
-
-      <View className={fx.content}>{children}</View>
     </BaseButton>
   )
 }
