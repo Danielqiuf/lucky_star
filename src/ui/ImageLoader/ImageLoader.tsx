@@ -230,6 +230,7 @@ const ImageLoader = memo(
     const handleError = useCallback(
       (e: any) => {
         setStatus('error')
+        console.error('onErroronErroronErroronError', e)
         onError?.(e)
         // 自动重试（指数退避）
         scheduleRetry()

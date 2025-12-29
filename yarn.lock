@@ -2209,7 +2209,7 @@
     "@tarojs/plugin-doctor-win32-ia32-msvc" "0.0.13"
     "@tarojs/plugin-doctor-win32-x64-msvc" "0.0.13"
 
-"@tarojs/plugin-framework-react@4.1.9":
+"@tarojs/plugin-framework-react@^4.1.9":
   version "4.1.9"
   resolved "https://registry.npmmirror.com/@tarojs/plugin-framework-react/-/plugin-framework-react-4.1.9.tgz#98b68ae1b70e544e05655061643bf250a8b06a32"
   integrity sha512-loztzTEgHL2yVZ0O2gaxXHJuA83nFwAKnk1+qX0/DzBts6WlVVzCtkdCLvPjMmV4gf53KwbU8YgGSmVn/iocnQ==
@@ -8915,6 +8915,11 @@ postcss@^8.0.0, postcss@^8.2.14, postcss@^8.4.33, postcss@^8.5.6:
     nanoid "^3.3.11"
     picocolors "^1.1.1"
     source-map-js "^1.2.1"
+
+preact@^10.28.1:
+  version "10.28.1"
+  resolved "https://registry.npmmirror.com/preact/-/preact-10.28.1.tgz#83325f0141bc8c97977c64d532429d667a26b411"
+  integrity sha512-u1/ixq/lVQI0CakKNvLDEcW5zfCjUQfZdK9qqWuIJtsezuyG6pk9TWj75GMuI/EzRSZB/VAE43sNWWZfiy8psw==
 
 prelude-ls@^1.2.1:
   version "1.2.1"

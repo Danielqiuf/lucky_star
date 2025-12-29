@@ -23,19 +23,33 @@ export default defineConfig<'webpack5'>(async (merge, { command, mode }) => {
     ],
     defineConstants: {
     },
-    copy: {
-      patterns: [
-        { from: 'src/assets/fonts', to: 'dist/assets/fonts' },
-      ],
-      options: {
+    esbuild: {
+      minify: {
+        enable: true,
+        config: {
+          target: 'es5', // target 默认值为 es5
+        },
+      },
+    },
+
+    framework: 'react',
+    compiler: {
+      type: 'webpack5',
+      prebundle: {
+          enable: false
       }
     },
-    framework: 'react',
-    compiler: 'webpack5',
     cache: {
       enable: true // Webpack 持久化缓存配置，建议开启。默认配置请参考：https://docs.taro.zone/docs/config-detail#cache
     },
+    csso: {
+      enable: true
+    },
     mini: {
+      optimizeMainPackage: {
+        enable: true,
+      },
+      enableSourceMap: false,
       postcss: {
         pxtransform: {
           enable: true,
@@ -47,13 +61,22 @@ export default defineConfig<'webpack5'>(async (merge, { command, mode }) => {
           enable: true,
           config: {
             namingPattern: 'module', // 转换模式，取值为 global/module
-            generateScopedName: '[name]__[local]___[hash:base64:5]'
+            generateScopedName: '[hash:base64:6]'
           }
         }
       },
       webpackChain(chain) {
         chain.resolve.plugin('tsconfig-paths').use(TsconfigPathsPlugin)
       }
+    },
+    terser: {
+      enable: true,
+      config: {
+        compress: true,
+        keep_classnames: true,
+        keep_fnames: true,
+        format: { comments: false },
+      },
     },
     h5: {
       publicPath: '/',
@@ -73,7 +96,7 @@ export default defineConfig<'webpack5'>(async (merge, { command, mode }) => {
           config: {}
         },
         cssModules: {
-          enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
+          enable: true, // 默认为 false，如需使用 css modules 功能，则设为 true
           config: {
             namingPattern: 'module', // 转换模式，取值为 global/module
             generateScopedName: '[name]__[local]___[hash:base64:5]'
@@ -88,7 +111,7 @@ export default defineConfig<'webpack5'>(async (merge, { command, mode }) => {
       appName: 'taroDemo',
       postcss: {
         cssModules: {
-          enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
+          enable: true, // 默认为 false，如需使用 css modules 功能，则设为 true
         }
       }
     }
@@ -101,5 +124,5 @@ export default defineConfig<'webpack5'>(async (merge, { command, mode }) => {
     return merge({}, baseConfig, devConfig)
   }
   // 生产构建配置（默认开启压缩混淆等）
-  return merge({}, baseConfig, prodConfig)
+  return merge({  }, baseConfig, prodConfig)
 })

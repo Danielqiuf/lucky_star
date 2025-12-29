@@ -1,5 +1,132 @@
 @import "@/specs/tokens.specs.less";
+@import "@/specs/mixins.specs.less";
 
-.text {
-  color: black;
+.contacts {
+  background-color: @color-bg;
+  .flex-col;
+}
+
+.header {
+  background-color: @color-primary;
+  &_content {
+    .flex-col;
+    padding: @space-16 @space-20;
+  }
+  &_title {
+    font-size: @font-size-24;
+    line-height: @line-height-18;
+    color: @color-text-secondary;
+  }
+  &_search_wrap {
+    width: 100%;
+    margin-top: @space-18;
+    .rpx-prop(height, 30);
+    border-radius: @radius-8;
+    background-color: @color-bg;
+  }
+  &_search {
+
+    font-size: @font-size-12;
+    color: @color-text;
+    font-weight: 400;
+    padding-left: @space-16;
+    .full-size-percent;
+    &_placeholder {
+      color: @color-primary;
+      font-size: @font-size-12;
+      font-weight: 400;
+    }
+  }
+}
+
+.tab {
+ .rpx-prop(margin-top, -1);
+  .flex-content-full;
+  .flex-col;
+  &_bar {
+    background-color: @color-primary;
+  }
+  &_root {
+    .flex-content-full;
+    .flex-col;
+  }
+  &_swiper {
+    .positioned-content-full;
+    &_wrap {
+      .flex-content-full;
+    }
+    &_item {
+      .flex-content-full;
+      .flex-col;
+    }
+  }
+
+  &_indicator {
+    background: @color-bg;
+    .rpx(4);
+    height: @result;
+    border-radius: @radius-round;
+  }
+  &_title {
+    font-size: @font-size-18;
+    color: fade(@color-text-secondary, 60%);
+    line-height: @line-height-16;
+    padding-bottom: @space-16;
+
+    &_active {
+      color: @color-text-secondary;
+    }
+  }
+  &_scroller {
+    height: 100%;
+    overflow: visible;
+
+    &_content {
+      padding: @space-24 @space-24 @space-30 @space-24;
+      overflow: visible
+    }
+  }
+}
+
+.item {
+  .flex-row-center;
+  padding: @space-12 @zero;
+  &:not(:last-of-type) {
+    border-bottom: 1px solid @border-color-secondary;
+
+  }
+
+  &_avatar {
+    border-radius: @radius-round;
+    .rpx(60);
+    width: @result;
+    height: @result;
+  }
+  &_right {
+    margin-left: @space-20;
+    flex: 1;
+    .flex-col(flex-start, cener)
+  }
+  &_name {
+    font-size: @font-size-18;
+    line-height: @line-height-16;
+  }
+  &_subtitle {
+    font-size: @font-size-14;
+    color: #616161;
+    line-height: @line-height-18;
+  }
+  &_btn_wrap {
+    .rpx-prop(width, 68);
+    background: @color-primary;
+    border-radius: @radius-round!important;
+    overflow: hidden;
+    line-height: 1;
+    padding: @space-4 @zero;
+    &_title {
+      font-size: @font-size-12;
+      color: @color-text-secondary;
+      line-height: @line-height-2;
+    }
+  }
 }

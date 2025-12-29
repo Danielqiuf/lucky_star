@@ -13,7 +13,7 @@ import fx from './styles/ripple.module.less'
 import { cx } from './utils/cx'
 
 const rippleTypeToColorMapper = {
-  'light': 'rgba(0,0,0,.18)',
+  'light': 'rgba(0,0,0,.28)',
   'dark': 'rgba(255,255,255, .28)'
 }
 

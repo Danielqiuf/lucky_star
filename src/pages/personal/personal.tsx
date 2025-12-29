@@ -1,7 +1,7 @@
-import {Text, View} from "@tarojs/components";
 
 import PageShell from "@/pages/shell/PageShell";
 
+import Header from "./Header";
 import styles from './personal.module.less'
 
 /**
@@ -9,9 +9,7 @@ import styles from './personal.module.less'
  */
 export default function Personal() {
 
-  return (<PageShell>
-    <View className="index" >
-      <Text className={styles.text}>个人档案</Text>
-    </View>
+  return (<PageShell className={styles.personal}>
+    <Header />
   </PageShell>)
 }

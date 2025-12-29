@@ -1,9 +1,12 @@
 import {View} from "@tarojs/components";
 import Taro, {getCurrentInstance, useDidShow} from "@tarojs/taro";
 
-import {ReactNode, useState} from "react";
+import {ReactNode} from "react";
+import {useDispatch} from "react-redux";
 
 import DrawerContentShell from "@/pages/shell/DrawerContentShell";
+import {useAppSelector} from "@/store/hooks";
+import {setDrawerOpen} from "@/store/modules";
 import {CenteredModal, cx} from "@/ui";
 
 import DrawerShell from "./DrawerShell";
@@ -12,7 +15,9 @@ import styles from './styles/page_shell.module.less'
 export default function PageShell(props: { children: ReactNode; className?: string; }) {
   const {className, children } = props
 
-  const [drawerOpen, setDrawerOpen] = useState(false)
+  const drawerOpen = useAppSelector(s => s.app.drawerOpen)
+
+  const dispatch = useDispatch();
 
   useDidShow(() => {
     const path = getCurrentInstance().router?.path || ''
@@ -36,18 +41,12 @@ export default function PageShell(props: { children: ReactNode; className?: stri
 
   return (
     <View className={cx(styles.page, className)} >
-      <View className={styles.content}>
-        {children}
-      </View>
+      {children}
 
       {/* 全屏侧边栏 */}
-      <DrawerShell open={drawerOpen} onClose={() => setDrawerOpen(false)}>
+      <DrawerShell open={drawerOpen} onClose={() => dispatch(setDrawerOpen(false))}>
         <DrawerContentShell />
       </DrawerShell>
-
-      <View className={styles.fab} onClick={() => setDrawerOpen(true)}>
-        ☰
-      </View>
 
       <CenteredModal />
     </View>

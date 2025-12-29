@@ -15,7 +15,7 @@ const TAB_CONTENT: Array<Array<{title: string; subtitle: string; img: string; }>
   [{
     title: '深度睡眠的深层意义',
     subtitle: '阿琳 · 2分钟前 · 健康话题',
-    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9KXvPSJz90SByc54stkwv_M-q1LGSxXHbVg&s'
+    img: 'https://copyright.bdstatic.com/vcg/creative/f06a550b104b31d0822822a4bc153289aaaa90af.jpg@wm_1,k_cGljX2JqaHdhdGVyLmpwZw=='
   },
     {
       title: '赏樱品茗话风雅！日本传统文化体验季启幕',

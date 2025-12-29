@@ -1,0 +1,129 @@
+@import "@/specs/tokens.specs.less";
+@import "@/specs/mixins.specs.less";
+
+.root {
+  width: 100%;
+}
+
+.tabBar {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.tabItem {
+  /* 是否等分你可以外部覆盖，这里给一个常见默认值 */
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tabItemActive {
+}
+
+.indicatorNoAnim {
+  transition: none!important;
+}
+
+.tabTitleWrap {
+  display: inline-flex;
+  align-items: center;
+}
+
+.tabText {
+  display: inline-block;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.tabTextActive {
+}
+
+.indicator {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  height: 2px;
+  border-radius: 999px;
+
+  background: #ffffff;
+
+  /* 非拖动时用 transition 动画 */
+  transition: transform 250ms ease, width 250ms ease;
+  will-change: transform, width;
+}
+
+.indicatorDragging {
+  transition: none;
+}
+
+.swiper_wrap {
+  width: 100%;
+  position: relative;
+}
+
+.swiper {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  height: auto;
+}
+
+.swiperItem {
+  width: 100%;
+
+}
+
+.content {
+  width: 100%;
+}
+
+/* 默认骨架屏（你也可以通过 renderSkeleton 换成第三方） */
+.skeleton {
+  width: 100%;
+  padding: 12px 0;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-40%);
+  }
+  100% {
+    transform: translateX(140%);
+  }
+}
+
+.skeletonLine,
+.skeletonLineShort {
+  position: relative;
+  overflow: hidden;
+  height: 14px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.08);
+  margin: 10px 0;
+}
+
+.skeletonLineShort {
+  width: 60%;
+}
+
+.skeletonLine::after,
+.skeletonLineShort::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-40%);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.55) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shimmer 1.2s infinite;
+}

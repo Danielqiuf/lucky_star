@@ -1,6 +1,42 @@
 @import "@/specs/tokens.specs.less";
+@import "@/specs/mixins.specs.less";
 
+.personal {
+  background-color: @color-bg;
+}
 
-.text {
-  color: black;
+.header {
+  background-color: @color-primary;
+
+  &_content {
+    .flex-col;
+    padding: @space-16 @space-20 @space-26;
+  }
+
+  &_title {
+    font-size: @font-size-24;
+    line-height: @line-height-18;
+    color: @color-text-secondary;
+  }
+
+  &_search_wrap {
+    width: 100%;
+    margin-top: @space-18;
+    .rpx-prop(height, 30);
+    border-radius: @radius-8;
+    background-color: @color-bg;
+  }
+  &_search {
+
+    font-size: @font-size-12;
+    color: @color-text;
+    font-weight: 400;
+    padding-left: @space-16;
+    .full-size-percent;
+    &_placeholder {
+      color: @color-primary;
+      font-size: @font-size-12;
+      font-weight: 400;
+    }
+  }
 }

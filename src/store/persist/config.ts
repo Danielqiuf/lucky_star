@@ -7,6 +7,7 @@ export const persistConfig = {
   key: 'START:WEAPP:PERSIST',
   version: PERSIST_VERSION,
   storage: persistStorage,
+  whitelist: [],
   migrate: createMigrate(migrations, {debug: false}),
   timeout: 10 * 1000
 }
