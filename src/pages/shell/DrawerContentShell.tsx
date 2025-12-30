@@ -54,6 +54,10 @@ export default function DrawerContentShell() {
       </View>
     </View>
     <RectPanel
+      topTitle="钻石级"
+      centerTopTitle="积分进度"
+      centerBottomTitle="2435积分于 2026-04-18过期"
+      progressTitle="积分进度"
       className={styles.panel}
       rightWidget={<ScaleAlphaButton>
         <Image src={icQrcode} className={styles.panel_qrcode} />

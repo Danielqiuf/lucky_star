@@ -11,7 +11,7 @@ export const modalFactory = {
   show(payload: CenteredModalPayload) {
     current = {
       confirmText: '继续',
-      closeOnMask: false,
+      closeOnMask: true,
       ...payload,
     }
     emit()

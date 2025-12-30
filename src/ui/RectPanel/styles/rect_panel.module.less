@@ -1,6 +1,19 @@
 @import "@/specs/tokens.specs.less";
 @import "@/specs/mixins.specs.less";
 
+.dark {
+  --title-color: @color-text-secondary;
+  --progress-text-color: @color-text-secondary;
+  --progress-percent-color: @color-text-secondary;
+  --top-tag-bg: rgba(255,255,255,.24);
+}
+
+.light {
+  --title-color: @color-text;
+  --progress-text-color: @color-text-sub2;
+  --progress-percent-color: @color-text;
+  --top-tag-bg: @color-primary;
+}
 
 .panel {
   border-radius: @radius-16;
@@ -8,7 +21,9 @@
   background-color: @color-primary;
   padding-left: @space-16;
   padding-right: @space-16;
-
+  &_top_tag {
+    background-color: var(--top-tag-bg);
+  }
   &_row {
     padding-top: @space-18;
     .flex-row(start, space-between);
@@ -27,8 +42,8 @@
   }
 
   &_scores {
-    font-size: @font-size-26;
-    color: @color-text-secondary;
+    font-size: @font-size-20;
+    color: var(--title-color);
     line-height: @line-height-16;
     padding-top: @space-8;
   }
@@ -41,7 +56,7 @@
   &_scores_progress {
     ._progress_text {
       font-size: @font-size-12;
-      color: @color-text-secondary;
+      color: var(--progress-text-color);
     }
     &_title {
       ._progress_text;
@@ -53,6 +68,7 @@
     }
     &_percent {
       ._progress_text;
+      color: var(--progress-percent-color);
       padding-left: @space-6;
     }
     &_bar {

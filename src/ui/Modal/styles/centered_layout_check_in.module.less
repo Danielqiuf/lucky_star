@@ -1,0 +1,29 @@
+@import "@/specs/tokens.specs.less";
+@import "@/specs/mixins.specs.less";
+
+.centered_layout {
+  width: 100%;
+  padding: @zero @space-16;
+  .flex-col-center;
+
+  &_map {
+    width: 100%;
+    background: @color-bg-heaven;
+    aspect-ratio: 1 / 1;
+    border-radius: @radius-20;
+  }
+  &_title {
+    font-size: @font-size-24;
+    line-height: @line-height-14;
+    text-align: center;
+    padding: @space-14 @zero;
+  }
+  &_img {
+    .rpx(42);
+    background-color: white;
+    border-radius: @radius-round;
+    width: @result;
+    height: @result;
+    margin-top: -(@result / 2);
+  }
+}

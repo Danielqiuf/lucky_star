@@ -2,7 +2,7 @@ import {Text, View} from "@tarojs/components";
 
 import {useEffect, useRef, useState} from "react";
 
-import {CenteredModalPayload, modalFactory} from "@/ui";
+import {CenteredModalPayload, cx, modalFactory} from "@/ui";
 
 import styles from './styles/centered_modal.module.less'
 
@@ -53,9 +53,11 @@ export default function CenteredModal() {
 
   const {
     confirmText = '继续',
-    closeOnMask = false,
+    subText,
+    closeOnMask = true,
     centerWidget,
     onConfirm,
+    onSubConfirm
   } = renderPayload
 
   const onMaskClick = () => {
@@ -65,6 +67,14 @@ export default function CenteredModal() {
   const onConfirmClick = async () => {
     try {
       await onConfirm?.()
+    } finally {
+      modalFactory.hide()
+    }
+  }
+
+  const onSubConfirmClick = async () => {
+    try {
+      await onSubConfirm?.()
     } finally {
       modalFactory.hide()
     }
@@ -86,6 +96,11 @@ export default function CenteredModal() {
         <View className={styles.btn} onClick={onConfirmClick}>
           <Text className={styles.btnText}>{confirmText}</Text>
         </View>
+        {!!subText && (
+          <View className={cx(styles.btn, styles.btn_sub)} onClick={onSubConfirmClick}>
+            <Text className={styles.btnText}>{subText}</Text>
+          </View>
+        )}
       </View>
     </View>
   )

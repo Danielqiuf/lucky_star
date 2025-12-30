@@ -27,10 +27,6 @@ export default defineAppConfig({
         text: ''
       },
       {
-        pagePath: 'pages/checkin/checkin',
-        text: ''
-      },
-      {
         pagePath: 'pages/schedule/schedule',
         text: ''
       },

@@ -15,7 +15,7 @@ import icScheduleActive from '@/assets/images/ic_tab_schedule_act.png'
 import {useSafeArea} from "@/hooks";
 import {useAppDispatch, useAppSelector} from "@/store/hooks";
 import {setTabBarSelected} from "@/store/modules";
-import { cx } from '@/ui'
+import {CenteredLayoutCheckIn, cx, modalFactory} from '@/ui'
 
 import styles from './index.module.less'
 
@@ -48,7 +48,14 @@ export default function CustomTabBar() {
   const switchTo = (i: number) => {
     const tab = TABS[i]
     if (!tab) {return}
-    if (tab.isCenter) {return Taro.navigateTo({ url: tab.url })}
+    if (tab.isCenter) {
+      modalFactory.show({
+        centerWidget: <CenteredLayoutCheckIn />,
+        confirmText: '继续',
+        subText: '食宿标准'
+      })
+      return;
+    }
 
     dispatch(setTabBarSelected(i))
 

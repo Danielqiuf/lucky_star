@@ -7,7 +7,7 @@
   top: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 9999;
+  z-index: @z-drawer;
 
   display: flex;
   align-items: center;
@@ -95,8 +95,6 @@
   align-items: center;
 }
 .btn {
-  margin-top: @space-30;
-
   .rpx(56);
   width: 100%;
   height: @result;
@@ -107,6 +105,9 @@
   justify-content: center;
 
   background: #1f6f5c;
+  &_sub {
+    .rpx-prop(margin-top, 10)
+  }
 }
 
 .btnText {

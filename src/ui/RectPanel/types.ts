@@ -5,4 +5,9 @@ export type RectPanelProps = {
   style?: CSSProperties
   rightWidget?: ReactNode;
   bottomWidget?: ReactNode
+  topTitle: string;
+  centerTopTitle: string;
+  centerBottomTitle?: string;
+  progressTitle: string;
+  theme?: 'light' | 'dark';
 }
